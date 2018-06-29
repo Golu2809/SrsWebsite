@@ -21,6 +21,18 @@
                 <th>
                     @Html.DisplayNameFor(model => model.IsFinished)
                 </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaliberType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShootingType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +47,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsFinished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaliberType.CaliberName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShootingType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ShootingId">Edit</a> |

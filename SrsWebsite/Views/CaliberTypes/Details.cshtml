@@ -1,0 +1,24 @@
+﻿@model SrsWebsite.Models.CaliberType
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CaliberType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CaliberName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CaliberName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CaliberTypeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
