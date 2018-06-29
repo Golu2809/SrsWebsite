@@ -28,6 +28,30 @@
         <dd>
             @Html.DisplayFor(model => model.IsFinished)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CaliberType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CaliberType.CaliberName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaymentType.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShootingType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShootingType.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
     </dl>
 </div>
 <div>

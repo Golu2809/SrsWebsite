@@ -21,7 +21,8 @@ namespace SrsWebsite.Controllers
         // GET: Shootings
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Shootings.ToListAsync());
+            var srsContext = _context.Shootings.Include(s => s.CaliberType).Include(s => s.PaymentType).Include(s => s.ShootingType).Include(s => s.User);
+            return View(await srsContext.ToListAsync());
         }
 
         // GET: Shootings/Details/5
@@ -33,6 +34,10 @@ namespace SrsWebsite.Controllers
             }
 
             var shooting = await _context.Shootings
+                .Include(s => s.CaliberType)
+                .Include(s => s.PaymentType)
+                .Include(s => s.ShootingType)
+                .Include(s => s.User)
                 .SingleOrDefaultAsync(m => m.ShootingId == id);
             if (shooting == null)
             {
@@ -45,6 +50,10 @@ namespace SrsWebsite.Controllers
         // GET: Shootings/Create
         public IActionResult Create()
         {
+            ViewData["CaliberTypeId"] = new SelectList(_context.CaliberTypes, "CaliberTypeId", "CaliberName");
+            ViewData["PaymentTypeId"] = new SelectList(_context.PaymentTypes, "PaymentTypeId", "Name");
+            ViewData["ShootingTypeId"] = new SelectList(_context.ShootingTypes, "ShootingTypeId", "Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName");
             return View();
         }
 
@@ -53,7 +62,7 @@ namespace SrsWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ShootingId,NumberOfShoots,CreationDateTime,IsFinished")] Shooting shooting)
+        public async Task<IActionResult> Create([Bind("ShootingId,NumberOfShoots,CreationDateTime,IsFinished,UserId,CaliberTypeId,PaymentTypeId,ShootingTypeId")] Shooting shooting)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +70,10 @@ namespace SrsWebsite.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CaliberTypeId"] = new SelectList(_context.CaliberTypes, "CaliberTypeId", "CaliberName", shooting.CaliberTypeId);
+            ViewData["PaymentTypeId"] = new SelectList(_context.PaymentTypes, "PaymentTypeId", "Name", shooting.PaymentTypeId);
+            ViewData["ShootingTypeId"] = new SelectList(_context.ShootingTypes, "ShootingTypeId", "Name", shooting.ShootingTypeId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", shooting.UserId);
             return View(shooting);
         }
 
@@ -77,6 +90,10 @@ namespace SrsWebsite.Controllers
             {
                 return NotFound();
             }
+            ViewData["CaliberTypeId"] = new SelectList(_context.CaliberTypes, "CaliberTypeId", "CaliberName", shooting.CaliberTypeId);
+            ViewData["PaymentTypeId"] = new SelectList(_context.PaymentTypes, "PaymentTypeId", "Name", shooting.PaymentTypeId);
+            ViewData["ShootingTypeId"] = new SelectList(_context.ShootingTypes, "ShootingTypeId", "Name", shooting.ShootingTypeId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", shooting.UserId);
             return View(shooting);
         }
 
@@ -85,7 +102,7 @@ namespace SrsWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ShootingId,NumberOfShoots,CreationDateTime,IsFinished")] Shooting shooting)
+        public async Task<IActionResult> Edit(int id, [Bind("ShootingId,NumberOfShoots,CreationDateTime,IsFinished,UserId,CaliberTypeId,PaymentTypeId,ShootingTypeId")] Shooting shooting)
         {
             if (id != shooting.ShootingId)
             {
@@ -112,6 +129,10 @@ namespace SrsWebsite.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CaliberTypeId"] = new SelectList(_context.CaliberTypes, "CaliberTypeId", "CaliberName", shooting.CaliberTypeId);
+            ViewData["PaymentTypeId"] = new SelectList(_context.PaymentTypes, "PaymentTypeId", "Name", shooting.PaymentTypeId);
+            ViewData["ShootingTypeId"] = new SelectList(_context.ShootingTypes, "ShootingTypeId", "Name", shooting.ShootingTypeId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "FirstName", shooting.UserId);
             return View(shooting);
         }
 
@@ -124,6 +145,10 @@ namespace SrsWebsite.Controllers
             }
 
             var shooting = await _context.Shootings
+                .Include(s => s.CaliberType)
+                .Include(s => s.PaymentType)
+                .Include(s => s.ShootingType)
+                .Include(s => s.User)
                 .SingleOrDefaultAsync(m => m.ShootingId == id);
             if (shooting == null)
             {

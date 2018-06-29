@@ -7,14 +7,27 @@ namespace SrsWebsite.Models
     {
         public int ShootingId { get; set; }
         public int NumberOfShoots { get; set; }
+
+
         [Required]
         public DateTime CreationDateTime { get; set; }
         public bool IsFinished { get; set; }
-        [Required]
-        public CaliberType Caliber { get; set; }
-        [Required]
+
+        public int UserId { get; set; }
+        public int CaliberTypeId { get; set; }
+        public int PaymentTypeId { get; set; }
+        public int ShootingTypeId { get; set; }
+
+        public User User { get; set; }
+        public CaliberType CaliberType { get; set; }
         public PaymentType PaymentType { get; set; }
-        [Required]
         public ShootingType ShootingType { get; set; }
+
+        //[Required]
+        //public CaliberType Caliber { get; set; }
+        //[Required]
+        //public PaymentType PaymentType { get; set; }
+        //[Required]
+        //public ShootingType ShootingType { get; set; }
     }
 }
