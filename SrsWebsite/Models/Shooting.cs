@@ -23,6 +23,12 @@ namespace SrsWebsite.Models
         public PaymentType PaymentType { get; set; }
         public ShootingType ShootingType { get; set; }
 
+
+        public Shooting()
+        {
+            CreationDateTime = DateTime.Now;
+        }
+
         //[Required]
         //public CaliberType Caliber { get; set; }
         //[Required]

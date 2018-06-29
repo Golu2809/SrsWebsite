@@ -62,7 +62,7 @@ namespace SrsWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ShootingId,NumberOfShoots,CreationDateTime,IsFinished,UserId,CaliberTypeId,PaymentTypeId,ShootingTypeId")] Shooting shooting)
+        public async Task<IActionResult> Create([Bind("ShootingId,NumberOfShoots,IsFinished,UserId,CaliberTypeId,PaymentTypeId,ShootingTypeId")] Shooting shooting)
         {
             if (ModelState.IsValid)
             {
