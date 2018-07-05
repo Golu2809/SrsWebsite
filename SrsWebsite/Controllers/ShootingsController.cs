@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,6 +23,7 @@ namespace SrsWebsite.Controllers
         public async Task<IActionResult> Index()
         {
             var srsContext = _context.Shootings.Include(s => s.CaliberType).Include(s => s.PaymentType).Include(s => s.ShootingType).Include(s => s.User);
+            
             return View(await srsContext.ToListAsync());
         }
 
@@ -173,5 +175,6 @@ namespace SrsWebsite.Controllers
         {
             return _context.Shootings.Any(e => e.ShootingId == id);
         }
+        
     }
 }
