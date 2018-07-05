@@ -25,7 +25,8 @@ namespace SrsWebsite
         {
             services.AddMvc();
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=tcp:shootingregistrationsystem.database.windows.net,1433;Initial Catalog=SrsDB;Persist Security Info=False;User ID=srsAdmin;Password=Srs12341234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
             services.AddDbContext<SrsContext>(options => options.UseSqlServer(connection));
         }
 
