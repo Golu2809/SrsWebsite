@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bower" Version="1.3.11" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.entityframeworkcore.sqlserver" Version="2.0.3" />
     <PackageReference Include="Microsoft.entityframeworkcore.tools" Version="2.0.3" />
