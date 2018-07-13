@@ -4,30 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<script type="text/javascript">
-    function cellStyle(value, row, index) {
-        console.log("test!");
-        var classes = ['active', 'success', 'info', 'warning', 'danger'];
-        var vartrue = true;
-        if (vartrue === true ) {
-            return {
-                classes: classes[1]
-            };
-        }
-        return {};
-    }
-
-    cellStyle(0, 0, 0);
-</script>
-
-
 <h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
-<table class="table table-dark" data-cell-style="cellStyle">
+<table class="table table-dark table-hover">
     <thead>
         <tr>
                 <th>
@@ -56,45 +39,50 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberOfShoots)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsFinished)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CaliberType.CaliberName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentType.Name)
-        </td>
-        @if (item.ShootingType.Name == "Indskydning")
+    @foreach (var item in Model)
+    {
+        if (item.IsFinished != true)
         {
-            <td class="bg-warning">
-           
-                @Html.DisplayFor(modelItem => item.ShootingType.Name)
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfShoots)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFinished)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaliberType.CaliberName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentType.Name)
+                </td>
+                @if (item.ShootingType.Name == "Indskydning")
+                {
+                    <td class="bg-warning">
 
-            </td>
-        } else if(item.ShootingType.Name == "Bukke Skydning"){ 
-            <td class="bg-success">
-                @Html.DisplayFor(modelItem => item.ShootingType.Name)
-            </td>
+                        @Html.DisplayFor(modelItem => item.ShootingType.Name)
+
+                    </td>
+                }
+                else if (item.ShootingType.Name == "Bukke Skydning")
+                {
+                    <td class="bg-success">
+                        @Html.DisplayFor(modelItem => item.ShootingType.Name)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ShootingId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ShootingId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ShootingId">Delete</a>
+                </td>
+            </tr>
+            }
         }
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.ShootingId">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.ShootingId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.ShootingId">Delete</a>
-        </td>
-    </tr>
-}
-    </tbody>
+        </tbody>
 </table>

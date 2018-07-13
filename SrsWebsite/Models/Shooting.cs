@@ -26,6 +26,8 @@ namespace SrsWebsite.Models
 
         public Shooting()
         {
+            NumberOfShoots = 0;
+            IsFinished = false;
             CreationDateTime = DateTime.Now;
         }
 
