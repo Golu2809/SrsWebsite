@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Bower" Version="1.3.11" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.2" />
     <PackageReference Include="Microsoft.entityframeworkcore.sqlserver" Version="2.0.3" />
     <PackageReference Include="Microsoft.entityframeworkcore.tools" Version="2.0.3" />
     <PackageReference Include="Microsoft.visualstudio.web.codegeneration.design" Version="2.0.4" />
