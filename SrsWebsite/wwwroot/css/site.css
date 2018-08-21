@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #607D8B;
 }
 
 /* Wrapping element */
@@ -33,3 +34,12 @@
         display: none;
     }
 }
+
+#mainNav {
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #607D8B
+}
+
